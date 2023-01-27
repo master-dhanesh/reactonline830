@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [name, setName] = useState("John Doe");
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    // let name = "John Doe";
+    // console.log(name);
+
+    const changeHandler = () => {
+        console.log("Inside Function!");
+        setName("Json smith");
+        console.log(name);
+    };
+
+    setInterval(() => {
+        setTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return (
+        <div className="App">
+            <h1>Name: {name}</h1>
+            <p>{time}</p>
+            <button onClick={changeHandler}>Change Name</button>
+        </div>
+    );
 }
 
 export default App;
+
+// React -> Vitrual DOM === Real DOM
