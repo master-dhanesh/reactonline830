@@ -1,25 +1,38 @@
 import { useState } from "react";
 function App() {
-    let [name, setName] = useState("John Doe");
-    const [time, setTime] = useState(new Date().toLocaleTimeString());
-    // let name = "John Doe";
-    // console.log(name);
+    // two way binding
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
 
-    const changeHandler = () => {
-        console.log("Inside Function!");
-        setName("Json smith");
-        console.log(name);
+    // const changeTitle = (e) => {
+    //     setTitle(e.target.value);
+    // };
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        // console.log(e.target[0].value);
+        // console.log(e.target[1].value);
+        console.log({ title, description });
     };
-
-    setInterval(() => {
-        setTime(new Date().toLocaleTimeString());
-    }, 1000);
 
     return (
         <div className="App">
-            <h1>Name: {name}</h1>
-            <p>{time}</p>
-            <button onClick={changeHandler}>Change Name</button>
+            <h3>Create Task</h3>
+            <form onSubmit={submitHandler}>
+                <input
+                    type="text"
+                    placeholder="Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title}
+                />
+                <input
+                    type="text"
+                    placeholder="Description"
+                    onChange={(e) => setDescription(e.target.value)}
+                    value={description}
+                />
+                <button>Create Task</button>
+            </form>
         </div>
     );
 }
