@@ -1,57 +1,34 @@
-import React, { Component } from "react";
-import Show from "./components/Show";
+import React, { useEffect, useState } from "react";
 
-class App extends Component {
-    // there is no constructor
-    // state = "asdas";
+const App = () => {
+    const [user, setUser] = useState("hi user...");
+    const [admin, setAdmin] = useState("hi admin...");
 
-    constructor(props) {
-        // to init the state data
-        super(props);
-        this.state = {
-            image: [],
-            show: false,
+    useEffect(() => {
+        console.log("inside useEffect");
+
+        return () => {
+            console.log("deleting component...");
         };
-        console.log("[app.js] constructor");
-    }
+    }, [admin]);
 
-    render() {
-        // to load the view(html/css) without original data
-        // whenever the state changes(data arrives) the render will update/reset/refresh
-        console.log("[app.js] render");
-        return (
-            <div>
-                <h1>This is App.js</h1>
-                {this.state.show ? <Show /> : "Click to show"}
-                <button
-                    onClick={() => this.setState({ show: !this.state.show })}
-                >
-                    Click
-                </button>
-            </div>
-        );
-    }
+    const changeuser = () => {
+        setUser("helloooo user...");
+    };
 
-    componentDidMount() {
-        // runs one in a lifetime when the component created
-        // to call the data from backend/ajax and set to the state
-        console.log("[app.js] componentdidmount");
+    const changeadmin = () => {
+        setAdmin("helloooo admin..");
+    };
 
-        fetch("https://picsum.photos/v2/list")
-            .then((d) => d.json())
-            .then((data) => {
-                console.log(data);
-                this.setState({ images: data });
-            })
-            .catch((err) => console.log(err));
-    }
-
-    // ---------------------------------------------------------------
-
-    componentDidUpdate(prevProps, prevState) {
-        console.log(prevProps, prevState);
-        console.log("[app.js] componentdidupdate");
-    }
-}
+    return (
+        <div>
+            <h1>{user}</h1>
+            <button onClick={changeuser}>change user</button>
+            <hr />
+            <h1>{admin}</h1>
+            <button onClick={changeadmin}>change admin</button>
+        </div>
+    );
+};
 
 export default App;
