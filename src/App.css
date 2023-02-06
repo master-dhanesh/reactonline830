@@ -1,0 +1,26 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pagination li {
+    padding: 0 1vmax;
+}
+
+.pagination .selected {
+    color: #fff;
+    background-color: tomato;
+}
+
+.pagination .next > a,
+.pagination .previous > a {
+    color: #fff;
+    background-color: black;
+    padding: 0.2vmax 0.3vmax;
+    font-weight: 900;
+    text-decoration: none;
+}
