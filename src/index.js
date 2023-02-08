@@ -5,6 +5,7 @@ import "remixicon/fonts/remixicon.css";
 import App from "./App";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import { BrowserRouter } from "react-router-dom";
 
 // optional configuration
 const options = {
@@ -18,7 +19,9 @@ const options = {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <AlertProvider template={AlertTemplate} {...options}>
-        <App />
-    </AlertProvider>
+    <BrowserRouter>
+        <AlertProvider template={AlertTemplate} {...options}>
+            <App />
+        </AlertProvider>
+    </BrowserRouter>
 );
