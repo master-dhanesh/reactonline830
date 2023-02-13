@@ -6,10 +6,16 @@ import About from "./components/About";
 import User from "./components/User";
 import Detail from "./components/Detail";
 
+import { toast } from "react-toastify";
+
 const App = () => {
+    const notify = () => toast("Wow so easy!");
     return (
         <div className="container mt-5">
             <Nav />
+            <button className="my-3" onClick={notify}>
+                Notify! Toast Example
+            </button>
             <hr />
             <Routes>
                 <Route path="/" element={<Home />} />

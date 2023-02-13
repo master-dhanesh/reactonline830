@@ -1,7 +1,10 @@
-import React from "react";
+import { useContext } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
+import { ProfileContext } from "../context/DataContext";
 
 const Details = () => {
+    const [profile, setProfile] = useContext(ProfileContext);
+    console.log(profile);
     const params = useParams();
     const location = useLocation();
     // console.log(params, location);
