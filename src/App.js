@@ -1,31 +1,35 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Nav from "./components/Nav";
-import Home from "./components/Home";
-import About from "./components/About";
-import User from "./components/User";
-import Detail from "./components/Detail";
-
-import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement, incrementByAmount } from "./store/slices/counterSlice";
 
 const App = () => {
-    const notify = () => toast("Wow so easy!");
+    const dispatch = useDispatch();
+    const { value } = useSelector((state) => state.counterReducer);
+
+    const incrementbyone = () => {
+        dispatch(increment());
+    };
+
+    const decrementbyone = () => {
+        dispatch(decrement());
+    };
+
+    const changevalue = () => {
+        dispatch(incrementByAmount(5))
+    }
+
     return (
         <div className="container mt-5">
-            <Nav />
-            <button className="my-3" onClick={notify}>
-                Notify! Toast Example
+            <h1>{value}</h1>
+            <button className="btn btn-primary" onClick={incrementbyone}>
+                Increase by 1
             </button>
-            <hr />
-            <Routes>
-                <Route path="/" element={<Home />} />
-
-                <Route path="/about" element={<About />}>
-                    <Route path="/about/:name" element={<Detail />} />
-                </Route>
-
-                <Route path="/user" element={<User />} />
-            </Routes>
+            <button className="btn btn-danger" onClick={decrementbyone}>
+                Decrement by 1
+            </button>
+            <button className="btn btn-danger" onClick={changevalue}>
+                change value
+            </button>
         </div>
     );
 };

@@ -11,4 +11,3 @@ https://developers.themoviedb.org/3/movies/get-movie-details
 
 image paths
 https://image.tmdb.org/t/p/w500/rr7E0NoGKxvbkb89eR1GwfoYjpA.jpg
-
