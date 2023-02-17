@@ -1,6 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement, incrementByAmount } from "./store/slices/counterSlice";
+import {
+    increment,
+    decrement,
+    incrementByAmount,
+} from "./store/slices/counterSlice";
+import { asyncloadimages } from "./store/slices/imageSlice";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -15,8 +21,12 @@ const App = () => {
     };
 
     const changevalue = () => {
-        dispatch(incrementByAmount(5))
-    }
+        dispatch(incrementByAmount(5));
+    };
+
+    useEffect(() => {
+        dispatch(asyncloadimages());
+    }, []);
 
     return (
         <div className="container mt-5">
